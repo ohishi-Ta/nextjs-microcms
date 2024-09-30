@@ -55,3 +55,28 @@ export const getNewsList = async (queries?: MicroCMSQueries) => {
   return listData;
 };
 
+// ニュース詳細を取得
+export const getNewsDetail = async (
+  contentId: string,
+  queries?: MicroCMSQueries
+) => {
+  const detailData = await client.getListDetail<News>({
+    endpoint: "news",
+    contentId,
+    queries,
+  });
+  return detailData;
+};
+
+// カテゴリーページで不正なidを入力した場合の処理
+export const getNewsCategory = async (
+  contentId: string,
+  queries?: MicroCMSQueries
+) => {
+  const detailData = await client.getListDetail<Category>({
+    endpoint: "categories",
+    contentId,
+    queries,
+  });
+  return detailData;
+};
